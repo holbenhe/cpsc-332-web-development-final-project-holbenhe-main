@@ -1,5 +1,13 @@
-const express = require("express");
+const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
+const bodyParser = require("body-parser");
+const ejs = require('ejs');
+
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(express.static("public"));
 
 //used for our database connections
 const MongoClient = require("mongodb").MongoClient;
@@ -42,7 +50,90 @@ app.listen(PORT, function() {
 
 //root path
 app.get("/", (req, res) => {
-    res.render("form.ejs");
+    res.render("home.ejs");
+});
+
+app.post("/create", (req, res) => {
+
+});
+
+var UserSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        unique: true,
+        reuqired: true,
+        trim: true
+    },
+    password : {
+        type: String,
+        required: true,
+    }
+});
+
+//hashing the password
+UserSchema.pre('save', function(next) {
+    var user = this;
+    bcrypt.hash(user.password, 10, function (err, hash) {
+        if (err) {
+            return next(err);
+        }
+        user.password = hash;
+        next();
+    })
+});
+
+UserSchema.statics.authenticate = function (userData, req, res) {
+    UserCredentials.findOne({
+        username : userData.usernmae
+    })
+        .exec(function (err, user) {
+            if (err) {
+                return res.render("error.ejs", {
+                    errors : 2
+                });
+            } else if (!user){
+                var err = new Error('User not found.');
+                err.status = 401;
+                //error
+                return res.render("error.ejs", {
+                    errors: 2
+                });
+            }
+            //if we get here, we did not hit an error...
+            bycrypt.compare(userData.password, user.password, function (err, result){
+                if (result === true) {
+                    req.session.userId = user_id;
+                    return res.render("form.ejs")
+                } else {
+                    return res.redirect("/login")
+                }
+            })
+        });
+}
+
+const UserCredentials = mongoose.model("UserCredential", UserSchema);
+
+const session = require('express-session');
+
+app.use(session({
+    secret: "blah",
+    resave: true,
+    saveUninitialized: false
+}));
+
+const VALID_AGREE_VALUES = ["Yes", "Maybe", "No"];
+
+app.get("/", function (req, res) {
+    return res.redirect("/login");
+});
+
+app.get("/form", (req, res) => {
+    if (req.session.userId) {
+        validateSession(req.session.userId, res);
+        res.render("form.ejs");
+    } else {
+        return res.redirect("/login");
+    }
 });
 
 
