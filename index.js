@@ -17,6 +17,7 @@ const client = new MongoClient(
         useNewUrlParser: true,
         useUnifiedTopology: true 
     }
+    
 );
 
 //set up the client connection to our specified database
