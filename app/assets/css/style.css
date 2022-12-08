@@ -43,7 +43,7 @@ a{
 
 .border-shadow{
     border:1px solid var(--border-btn);
-    box-shadow: 1px 3px 10px #e9ecef
+    box-shadow: 1px 3px 10px #e9ecef;
 }
 
 .text-dark{
@@ -100,7 +100,7 @@ table{
 .table td>a.btn{
     padding: 3em 1em;
     font-size: 1.1em;
-    margin: 0.2em;
+    margin: 0 .2em;
 }
 
 .table tr:hover{
@@ -141,4 +141,46 @@ H1 {
 
 #info {
     color: white;
+}
+
+.form-title{
+    margin-top: 2em;
+}
+
+.form-title > h2 {
+    padding: 5em 0;
+}
+
+#update_textbook.form-group,
+#add_textbook.form-group{
+    margin: 4em 0;
+}
+
+#update_user.form-group input[type="text"],
+#add_textbook.form-group input[type="text"]{
+    width:100%;
+    padding: 6em 1em;
+    margin: 5em 0;
+    border: 1px solid var(--border);
+    font-size: 1em;
+    border-radius: 2em;
+}
+
+@media only screen and (max-width: 1024px){
+    table,thead,tbody,th,td,tr{
+        display:block;
+    }
+
+    thead tr{
+        position:absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr{border: 1px solid var(--border);}
+
+    td{
+        border: none;
+        position: relative;
+    }
 }

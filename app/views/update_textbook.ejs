@@ -180,39 +180,41 @@ document.getElementById("textbookNameSubmit").onclick = function(){
     <main id="site-main">
         <div class="container">
             <div class="box-nav d-flex justify-between">
-                <a href ="/add-textbook" class="border-shadow">
-                    <span class="text-gradient">New Textbook</span>
-                </a>
+                <div class="filter">
+                    <a href="/">All textbooks</a>
+                </div>
             </div>
+            <div class="form-title text-center">
+                <h2 class="text-dark">Update Textbook</h2>
+                <span class="text-light">Use the below to form to update a textbook</span>
+            </div>
+            <form method="POST" id="update_textbook">
+                <div class="new_textbook">
+                    <div class="form-group">
+                        <label for="textbook" class="text-light">Textbook</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="name" value="" placeholder="Calc for dummies">
+                    </div>
+                    <div class="form-group">
+                        <label for="website" class="text-light">Website</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="website" value="" placeholder="Amazon">
+                    </div>
+                    <div class="form-group">
+                        <label for="website_review" class="text-light">Website Review</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="website_review" value="" placeholder="Amazon is swag">
+                    </div>
+                    <div class="form-group">
+                        <label for="textbook_review" class="text-light">Texbook Review</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="textbook_review" value="" placeholder="Never used it">
+                    </div>
 
-            <form action="/" method="POST">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Textbook Name</th>
-                            <th>Website Bought From</th>
-                            <th>Website review</th>
-                            <th>textbook review</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Calc for Dummies</td>
-                            <td>Amazon</td>
-                            <td>Amazon is crazy</td>
-                            <td>Was too complex</td>
-                            <td>
-                                <a href="/update-textbook" class="btn border-shadow update">
-                                    <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
-                                </a>
-                                <a class="btn border-shadow delete">
-                                    <span class="text-gradient"><i class="fas fa-times"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="form-group">
+                        <button type="submit" class="btn text-dark update">Save</button>
+                    </div>
+                </div>
             </form>
         </div>
     </main>
