@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web development final project - Henry Holben</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <script>
         const fs = require('fs');
 
@@ -17,36 +20,7 @@
         });
 
     </script>
-    <style>
-        body {
-            background-color: grey;
-            
-        }
-        H1 {
-            color: lightblue;
-            position: relative;
-            left: 40%;
-           
-        }
-
-        #title {
-            display:flex;
-            flex-direction: column;
-            position: relative;
-            background-color: gray;
-        }
-
-        #textbookInput {
-            position: relative;
-        }
-
-        #info {
-            color: white;
-        }
-
-
-    </style>
-
+    
 </head>
 <body>
     <div id="title"> 
@@ -157,86 +131,89 @@ document.getElementById("textbookNameSubmit").onclick = function(){
     </div>
 
     <div>
-        <p id="info">If you would like, leave a review on one of the websites</p>
-        <input type="checkbox" id="AbeBooks" name="AbeBooks" value="Website">
-        <label for="AbeBooks" id="info"> AbeBooks</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
-         </form>
-
-        <input type="checkbox" id="Amazon" name="Amazon" value="Website">
-        <label for="Amazon"" id="info"> Amazon</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
-         </form>
-
-        <input type="checkbox" id="barnesandnoble" name="barnesandnoble" value="Website">
-        <label for="barnesandnoble" id="info"> barnesandnoble</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
-         </form>
-
-        <input type="checkbox" id="bigwords" name="bigwords" value="Website">
-        <label for="bigwords" id="info"> bigwords</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
-         </form>
-
-        <input type="checkbox" id="booksrun" name="booksrun" value="Website">
-        <label for="booksrun" id="info"> booksrun</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
-         </form>
-
-        <input type="checkbox" id="campusbooks" name="campusbooks" value="Website">
-        <label for="campusbooks" id="info"> campusbooks</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
-         </form>
-
-        <input type="checkbox" id="cheapesttextbooks" name="cheapesttextbooks" value="Website">
-        <label for="cheapesttextbooks" id="info"> cheapesttextbooks</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
-         </form>
-
-        <input type="checkbox" id="Chegg" name="Chegg" value="Website">
-        <label for="Chegg" id="info"> Chegg</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
-         </form>
-
-        <input type="checkbox" id="collegebooksdirect" name="collegebooksdirect" value="Website">
-        <label for="collegebooksdirect" id="info"> collegebooksdirect</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
-         </form>
-
-        <input type="checkbox" id="ecampus" name="ecampus" value="Website">
-        <label for="ecampus" id="info"> ecampus</label><br>
-        <form id="info">
-            Review:<br> <input type="text" name="websiteReview">
-            
-            <input type="submit" value="Submit">
+        <p id="info">If you found a textbook you liked, leave a review of the wbesite and enter the textbook name</p>
+        
+        <form class="container" method="post" action="/submission">
+            Website Name
+            Write exactly as: Abe Books, Amazon, Barnes and Noble, Big Words, Books Run, Campus Books, Cheapest Textbooks, Chegg, or E Campus <br> 
+            <div class="form-group">
+                <input class="form-control" name="website">
+            </div>
+            Your review
+            <div class="form-group">
+                <textarea class="form-control" name="review"></textarea>
+            </div>
+            Textbook Name
+            <div class="form-group">
+                <input class="form-control" name="enterTextbook">
+            </div>
+            <button>Submit Information</button>
          </form>
     </div>
+
+    <div>
+        <p id="info">Delete a textbook from the database?</p>
+
+        <form class="container" method="get" action="/">
+            If so, enter the textbook name
+            <div class="form-group">
+                <input class="form-control" name="delete">
+            </div>
+            <button>Delete</button>
+        </form>
+
+    </div>
+
+    <div>
+        <p id="info">Send your repository to others?</p>
+
+        <form class="container" method="get" action="/">
+            If so, enter the email of the recipient. The subject of the email will be your ([user name]'s textbook list')
+            <div class="form-group">
+                <input class="form-control" name="delete">
+            </div>
+            <button>send</button>
+        </form>
+        
+    </div>
+
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href ="/add-textbook" class="border-shadow">
+                    <span class="text-gradient">New Textbook</span>
+                </a>
+            </div>
+
+            <form action="/" method="POST">
+                <table class="table">
+                    <thread class="thead-dark">
+                        <tr>
+                            <th>Textbook Name</th>
+                            <th>Website Bought From</th>
+                            <th>Website review</th>
+                            <th>textbook review</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        <tr>
+                            <td>Calc for Dummies</td>
+                            <td>Amazon</td>
+                            <td>Amazon is crazy</td>
+                            <td>Was too complex</td>
+                            <td>
+                                <a href="#" class="btn border-shadow update">
+                                    <span class="text-graident"><i class="fas fa-pencil-alt"></i></span>
+                                </a>
+                                <a class="btn border-shadow delete">
+                                    <span class="text-gradient"><i class="fas fa-times"></i></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
