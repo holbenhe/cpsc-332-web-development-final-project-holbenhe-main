@@ -8,35 +8,45 @@
 
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <script>
-        const fs = require('fs');
 
-        fs.readFile('test.txt', 'ut8', (err, data) => {
-            if(err){
-                console.error(err);
-                return;
-            }
-            console.log(data)
-        });
+    <style>
+        body {
+    background-color: grey;
+    
+}
+H1 {
+    color: lightblue;
+    position: relative;
+    left: 40%;
+   
+}
 
-    </script>
+#title {
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    background-color: gray;
+}
+
+#textbookInput {
+    position: relative;
+}
+
+#info {
+    color: white;
+}
+    </style>
 
 </head>
 <body>
     <div id="title"> 
         <H1>Textbook Wizard</H1>
     </div>
-    
-    <div id="account">
-        <a href="./accountPage.html" id="info">Create an account (Save your credit card info!)</a>
-    </div>
-    <div id="accPage">
-        <a href="./accountHub.html">Account page</a>
-    </div>
+
     <div id="info">
         <p>
             Welcome to Textbook Wizard! Here you will be able to find
-            where to buy the cheapest textbook that you are looking for.
+            where to buy the cheapest textbook that you are looking for and update your database with textbooks and reviews!.
             In the text field below input the name of the textbook that you are looking for.
         </p>
     </div>
@@ -68,115 +78,27 @@ document.getElementById("textbookNameSubmit").onclick = function(){
 
     <div>
         <p id="info"> Here are some possible websites</p>
-        <a href="https://www.abebooks.com/" id="abeBooksLink">
-            <img alt="Abe Books" src="./Images/AbeBooksLogo.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
+        <a href="https://www.abebooks.com/" id="abeBooksLink">Abe Books</a>
          <br>
-         <a href="https://www.amazon.com/" id="AmazonLink">
-            <img alt="Amazon" src="Images/AmazonLogo.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
+         <a href="https://www.amazon.com/" id="AmazonLink">Amazon</a>
          <br>
-         <a href="https://www.barnesandnoble.com/" id="barnesAndNobleLink">
-            <img alt="Barnes and Noble" src="Images/BarnesAndNobleLogo.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
+         <a href="https://www.barnesandnoble.com/" id="barnesAndNobleLink">Barnes and Noble</a>
          <br>
-         <a href="https://www.bigwords.com/" id="bigWordsLink">
-            <img alt="Big Words" src="Images/BigWordsLogo.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
+         <a href="https://www.bigwords.com/" id="bigWordsLink">Big Words</a>
          <br>
-         <a href="https://booksrun.com/" id="booksRunLink"> 
-            <img alt="Books Run" src="Images/BooksRunLogo.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
+         <a href="https://booksrun.com/" id="booksRunLink">Books Run</a>
          <br>
-         <a href="https://www.campusbooks.com/" id="campusBooksLink">
-            <img alt="Campus Books" src="Images/CampusBooksLogo.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
+         <a href="https://www.campusbooks.com/" id="campusBooksLink">Campus Books</a>
          <br>
-         <a href="https://www.cheapesttextbooks.com/" id="cheapestTextbooksLink">
-            <img alt="Cheapest Textbooks" src="Images/CheapestTextbooks.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
+         <a href="https://www.cheapesttextbooks.com/" id="cheapestTextbooksLink">Cheapest Textbooks</a>
          <br>
-         <a href="https://www.chegg.com/books" id="cheggLink">
-            <img alt="Chegg" src="Images/CheggLogo.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
+         <a href="https://www.chegg.com/books" id="cheggLink">Chegg</a>
          <br>
-         <!-- <a href="https://www.collegebooksdirect.com/">
-            <img alt="College Books Direct" src="Images/CollegeBooksDirectLogo.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
-         <br> -->
-         <a href="https://www.ecampus.com/" id="ecampusLink">
-            <img alt="E Campus" src="Images/ECampusLogo.png"
-            width=150" height="70">
-         </a>
-         <button>add textbook to cart</button>
+         <a href="https://www.ecampus.com/" id="ecampusLink">E Campus</a>
          <br>
     </div>
-
-    <div>
-        <p id="info">If you found a textbook you liked, leave a review of the wbesite and enter the textbook name</p>
-        
-        <form class="container" method="post" action="/submission">
-            Website Name
-            Write exactly as: Abe Books, Amazon, Barnes and Noble, Big Words, Books Run, Campus Books, Cheapest Textbooks, Chegg, or E Campus <br> 
-            <div class="form-group">
-                <input class="form-control" name="website">
-            </div>
-            Your review
-            <div class="form-group">
-                <textarea class="form-control" name="review"></textarea>
-            </div>
-            Textbook Name
-            <div class="form-group">
-                <input class="form-control" name="enterTextbook">
-            </div>
-            <button>Submit Information</button>
-         </form>
-    </div>
-
-    <div>
-        <p id="info">Delete a textbook from the database?</p>
-
-        <form class="container" method="get" action="/">
-            If so, enter the textbook name
-            <div class="form-group">
-                <input class="form-control" name="delete">
-            </div>
-            <button>Delete</button>
-        </form>
-
-    </div>
-
-    <div>
-        <p id="info">Send your repository to others?</p>
-
-        <form class="container" method="get" action="/">
-            If so, enter the email of the recipient. The subject of the email will be your ([user name]'s textbook list')
-            <div class="form-group">
-                <input class="form-control" name="delete">
-            </div>
-            <button>send</button>
-        </form>
-        
-    </div>
-
+    <br>
+    <br>
     <main id="site-main">
         <div class="container">
             <div class="box-nav d-flex justify-between">
@@ -188,27 +110,27 @@ document.getElementById("textbookNameSubmit").onclick = function(){
                 <h2 class="text-dark">New Textbook</h2>
                 <span class="text-light">Use the below to form to create a new textbook</span>
             </div>
-            <form method="POST" id="update_textbook">
+            <form action="/api/textbooks" method="POST" id="add_textbook">
                 <div class="new_textbook">
                     <div class="form-group">
                         <label for="textbook" class="text-light">Textbook</label>
                         <input type="hidden" name="id" value="">
-                        <input type="text" name="name" value="" placeholder="Calc for dummies">
+                        <input type="text" name="textbook" value="" placeholder="Calc for dummies">
                     </div>
                     <div class="form-group">
-                        <label for="website" class="text-light">Website</label>
+                        <label for="place" class="text-light">Website</label>
                         <input type="hidden" name="id" value="">
-                        <input type="text" name="website" value="" placeholder="Amazon">
+                        <input type="text" name="place" value="" placeholder="Amazon">
                     </div>
                     <div class="form-group">
-                        <label for="website_review" class="text-light">Website Review</label>
+                        <label for="place_review" class="text-light">Website Review</label>
                         <input type="hidden" name="id" value="">
-                        <input type="text" name="website_review" value="" placeholder="Amazon is swag">
+                        <input type="text" name="placereview" value="" placeholder="Amazon is swag">
                     </div>
                     <div class="form-group">
                         <label for="textbook_review" class="text-light">Texbook Review</label>
                         <input type="hidden" name="id" value="">
-                        <input type="text" name="textbook_review" value="" placeholder="Never used it">
+                        <input type="text" name="textbookreview" value="" placeholder="Never used it">
                     </div>
 
                     <div class="form-group">
@@ -218,5 +140,13 @@ document.getElementById("textbookNameSubmit").onclick = function(){
             </form>
         </div>
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/index.js"></script>
+    <script>
+        $("#add_textbook").submit(function(event){
+    alert("Data Inserted Successfully!");
+})      
+    </script>
 </body>
 </html>

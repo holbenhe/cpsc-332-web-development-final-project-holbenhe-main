@@ -1,6 +1,16 @@
+const axios = require('axios');
+
 
 exports.homeRoutes = (req, res) => {
-    res.render('index');
+    //make a get request to the /api/users
+    axios.get('http://localhost:3000/api/textbooks')
+        .then(function(response){
+            res.render('index', {textbooks:response.data});
+        })
+
+        .catch(err => {
+            res.send(err);
+        })
 }
 
 exports.add_textbook = (req,res) => {
@@ -8,5 +18,11 @@ exports.add_textbook = (req,res) => {
 }
 
 exports.update_textbook = (req,res) =>{
-    res.render('update_textbook');
+    axios.get('http://localhost:3000/api/textbooks', {params: {id: req.query.id}})
+    .then(function(textbookdata){
+        res.render("update_textbook",{textbook : textbookdata.data})
+    })
+    .catch(err=>{
+        res.send(err);
+    })
 }
