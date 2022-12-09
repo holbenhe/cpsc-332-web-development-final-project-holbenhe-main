@@ -1,41 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web development final project - Henry Holben</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <style>
-        body {
-    background-color: grey;
-}
-H1 {
-    color: lightblue;
-    position: relative;
-    left: 40%;
-   
-}
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script>
+        const fs = require('fs');
 
-#title {
-    display:flex;
-    flex-direction: column;
-    position: relative;
-    background-color: gray;
-}
+        fs.readFile('test.txt', 'ut8', (err, data) => {
+            if(err){
+                console.error(err);
+                return;
+            }
+            console.log(data)
+        });
 
-#textbookInput {
-    position: relative;
-}
+    </script>
 
-#info {
-    color: white;
-}
-    </style>
 </head>
-
 <body>
     <div id="title"> 
         <H1>Textbook Wizard</H1>
@@ -58,10 +44,15 @@ H1 {
         <label>Name of textbook:</label><br>
         <input type="text" id="textbookName">
         <button type ="button" id="textbookNameSubmit">Search</button>
+        <!-- <form id="info">
+            Name of textbook:<br> <input type="text" name="textbookName" id="input">
+            
+            <input type="submit" value="Find Textbooks" id="TextbookFinderButton">
+         </form> -->
     </div>
 
     <script>
-    document.getElementById("textbookNameSubmit").onclick = function(){
+document.getElementById("textbookNameSubmit").onclick = function(){
     var textbook = document.getElementById("textbookName").value;
     document.getElementById("AmazonLink").href=("https://www.amazon.com/s?k=" + textbook);
     document.getElementById("abeBooksLink").href=("https://www.abebooks.com/servlet/SearchResults?kn=" + textbook);
@@ -77,53 +68,53 @@ H1 {
 
     <div>
         <p id="info"> Here are some possible websites</p>
-        <a href="https://www.abebooks.com/" target="_blank" rel="noopener noreferrer" id="abeBooksLink">
+        <a href="https://www.abebooks.com/" id="abeBooksLink">
             <img alt="Abe Books" src="./Images/AbeBooksLogo.png"
             width=150" height="70">
          </a>
-         <button>add textbook to list</button>
+         <button>add textbook to cart</button>
          <br>
-         <a href="https://www.amazon.com/" target="_blank" rel="noopener noreferrer" id="AmazonLink">
+         <a href="https://www.amazon.com/" id="AmazonLink">
             <img alt="Amazon" src="Images/AmazonLogo.png"
             width=150" height="70">
          </a>
-         <button>add textbook to list</button>
+         <button>add textbook to cart</button>
          <br>
-         <a href="https://www.barnesandnoble.com/" target="_blank" rel="noopener noreferrer" id="barnesAndNobleLink">
+         <a href="https://www.barnesandnoble.com/" id="barnesAndNobleLink">
             <img alt="Barnes and Noble" src="Images/BarnesAndNobleLogo.png"
             width=150" height="70">
          </a>
-         <button>add textbook to list</button>
+         <button>add textbook to cart</button>
          <br>
-         <a href="https://www.bigwords.com/" target="_blank" rel="noopener noreferrer" id="bigWordsLink">
+         <a href="https://www.bigwords.com/" id="bigWordsLink">
             <img alt="Big Words" src="Images/BigWordsLogo.png"
             width=150" height="70">
          </a>
-         <button>add textbook to list</button>
+         <button>add textbook to cart</button>
          <br>
-         <a href="https://booksrun.com/" target="_blank" rel="noopener noreferrer" id="booksRunLink"> 
+         <a href="https://booksrun.com/" id="booksRunLink"> 
             <img alt="Books Run" src="Images/BooksRunLogo.png"
             width=150" height="70">
          </a>
-         <button>add textbook to list</button>
+         <button>add textbook to cart</button>
          <br>
-         <a href="https://www.campusbooks.com/" target="_blank" rel="noopener noreferrer" id="campusBooksLink">
+         <a href="https://www.campusbooks.com/" id="campusBooksLink">
             <img alt="Campus Books" src="Images/CampusBooksLogo.png"
             width=150" height="70">
          </a>
-         <button>add textbook to list</button>
+         <button>add textbook to cart</button>
          <br>
-         <a href="https://www.cheapesttextbooks.com/" target="_blank" rel="noopener noreferrer" id="cheapestTextbooksLink">
+         <a href="https://www.cheapesttextbooks.com/" id="cheapestTextbooksLink">
             <img alt="Cheapest Textbooks" src="Images/CheapestTextbooks.png"
             width=150" height="70">
          </a>
-         <button>add textbook to list</button>
+         <button>add textbook to cart</button>
          <br>
-         <a href="https://www.chegg.com/books" target="_blank" rel="noopener noreferrer" id="cheggLink">
+         <a href="https://www.chegg.com/books" id="cheggLink">
             <img alt="Chegg" src="Images/CheggLogo.png"
             width=150" height="70">
          </a>
-         <button>add textbook to list</button>
+         <button>add textbook to cart</button>
          <br>
          <!-- <a href="https://www.collegebooksdirect.com/">
             <img alt="College Books Direct" src="Images/CollegeBooksDirectLogo.png"
@@ -135,14 +126,14 @@ H1 {
             <img alt="E Campus" src="Images/ECampusLogo.png"
             width=150" height="70">
          </a>
-         <button>add textbook to list</button>
+         <button>add textbook to cart</button>
          <br>
     </div>
 
     <div>
         <p id="info">If you found a textbook you liked, leave a review of the wbesite and enter the textbook name</p>
         
-        <form class="container" method="post" action="/">
+        <form class="container" method="post" action="/submission">
             Website Name
             Write exactly as: Abe Books, Amazon, Barnes and Noble, Big Words, Books Run, Campus Books, Cheapest Textbooks, Chegg, or E Campus <br> 
             <div class="form-group">
@@ -186,5 +177,46 @@ H1 {
         
     </div>
 
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <div class="filter">
+                    <a href="/">All textbooks</a>
+                </div>
+            </div>
+            <div class="form-title text-center">
+                <h2 class="text-dark">New Textbook</h2>
+                <span class="text-light">Use the below to form to create a new textbook</span>
+            </div>
+            <form method="POST" id="update_textbook">
+                <div class="new_textbook">
+                    <div class="form-group">
+                        <label for="textbook" class="text-light">Textbook</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="name" value="" placeholder="Calc for dummies">
+                    </div>
+                    <div class="form-group">
+                        <label for="website" class="text-light">Website</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="website" value="" placeholder="Amazon">
+                    </div>
+                    <div class="form-group">
+                        <label for="website_review" class="text-light">Website Review</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="website_review" value="" placeholder="Amazon is swag">
+                    </div>
+                    <div class="form-group">
+                        <label for="textbook_review" class="text-light">Texbook Review</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="textbook_review" value="" placeholder="Never used it">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn text-dark update">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

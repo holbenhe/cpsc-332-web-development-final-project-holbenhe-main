@@ -26,7 +26,7 @@
 </head>
 <body>
     <h1>Account Creator</h1>
-    <form action="./accountCreated.html">
+    <form action="/create" method="POST">
 
         <p>
         <label for="first" id="info">Email:</label>
@@ -40,16 +40,10 @@
                 placeholder="**************">
         </p>
 
-        <p>
-            <label for="credit card" id="info">Credit Card:</label>
-            <input type="text" id="CreditCard"
-                placeholder="DO NOT PUT REAL ONE">
-        </p>
-
         <input type="submit" value="Create account">
 
     </form>
 
-    <a href="./index.html" id="info">Back to the main page</a>
+    <a href="./home.ejs" id="info">Back to the main page</a>
 </body>
 </html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web development final project - Henry Holben</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <style>
+        body {
+    background-color: grey;
+    
+}
+H1 {
+    color: lightblue;
+    position: relative;
+    left: 40%;
+   
+}
+
+#title {
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    background-color: gray;
+}
+
+#textbookInput {
+    position: relative;
+}
+
+#info {
+    color: white;
+}
+    </style>
+
+</head>
+<body>
+    <div id="title"> 
+        <H1>Textbook Wizard</H1>
+    </div>
+
+    <div id="info">
+        <p>
+            Welcome to Textbook Wizard! Here you will be able to find
+            where to buy the cheapest textbook that you are looking for and update your database with textbooks and reviews!.
+            In the text field below input the name of the textbook that you are looking for.
+        </p>
+    </div>
+    <div id="textbookInput">
+        <label>Name of textbook:</label><br>
+        <input type="text" id="textbookName">
+        <button type ="button" id="textbookNameSubmit">Search</button>
+        <!-- <form id="info">
+            Name of textbook:<br> <input type="text" name="textbookName" id="input">
+            
+            <input type="submit" value="Find Textbooks" id="TextbookFinderButton">
+         </form> -->
+    </div>
+
+    <script>
+document.getElementById("textbookNameSubmit").onclick = function(){
+    var textbook = document.getElementById("textbookName").value;
+    document.getElementById("AmazonLink").href=("https://www.amazon.com/s?k=" + textbook);
+    document.getElementById("abeBooksLink").href=("https://www.abebooks.com/servlet/SearchResults?kn=" + textbook);
+    document.getElementById("barnesAndNobleLink").href=("https://www.barnesandnoble.com/s/" + textbook);
+    document.getElementById("bigWordsLink").href=("https://www.bigwords.com/search?tab=get&pageNumber=1&searchType=Books&keywords=" + textbook + "&isbn=&author=&publisher=");
+    document.getElementById("booksRunLink").href=("https://booksrun.com/search/" + textbook);
+    document.getElementById("campusBooksLink").href=("https://www.campusbooks.com/books/search?keywords=" + textbook);
+    document.getElementById("cheapestTextbooksLink").href=("https://www.cheapesttextbooks.com/IM/?keyval=" + textbook);
+    document.getElementById("cheggLink").href=("https://www.chegg.com/search?q=" + textbook + "&trackid=ad90db16b2d8&strackid=960d7c13ba81&contentType=textbooks");
+    document.getElementById("ecampusLink").href=("https://www.ecampus.com/search-results?terms=" + textbook);
+    }
+    </script>
+
+    <div>
+        <p id="info"> Here are some possible websites</p>
+        <a href="https://www.abebooks.com/" id="abeBooksLink">Abe Books</a>
+         <br>
+         <a href="https://www.amazon.com/" id="AmazonLink">Amazon</a>
+         <br>
+         <a href="https://www.barnesandnoble.com/" id="barnesAndNobleLink">Barnes and Noble</a>
+         <br>
+         <a href="https://www.bigwords.com/" id="bigWordsLink">Big Words</a>
+         <br>
+         <a href="https://booksrun.com/" id="booksRunLink">Books Run</a>
+         <br>
+         <a href="https://www.campusbooks.com/" id="campusBooksLink">Campus Books</a>
+         <br>
+         <a href="https://www.cheapesttextbooks.com/" id="cheapestTextbooksLink">Cheapest Textbooks</a>
+         <br>
+         <a href="https://www.chegg.com/books" id="cheggLink">Chegg</a>
+         <br>
+         <a href="https://www.ecampus.com/" id="ecampusLink">E Campus</a>
+         <br>
+    </div>
+    <br>
+    <br>
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href ="/add-textbook" class="border-shadow">
+                    <span class="text-gradient">New Textbook</span>
+                </a>
+            </div>
+            
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <% for(var i=0;i<textbooks.length; i++) {%>
+                        <tr>
+                            <th>Row</th>
+                            <th>Textbook Name</th>
+                            <th>Website Bought From</th>
+                            <th>Website review</th>
+                            <th>textbook review</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%= i + 1%></td>
+                            <td><%= textbooks[i].textbook %></td>
+                            <td><%= textbooks[i].place %></td>
+                            <td><%= textbooks[i].placereview %></td>
+                            <td><%= textbooks[i].textbookreview %></td>
+                            <td>
+                                <a href="/update-textbook?id=<%= textbooks[i]._id%>" class="btn border-shadow update">
+                                    <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                </a>
+                                <a class="btn border-shadow delete" data-id='<%= textbooks[i]._id%>' >
+                                    <span class="text-gradient"><i class="fas fa-times"></i></span>
+                                </a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            if(window.location.pathname == "/"){
+                $ondelete = $(".table tbody td a.delete");
+                $ondelete.click(function(){
+                var id = $(this).attr("data-id")
+
+                var request = {
+                "url" : ('http://localhost:3000/api/textbooks/' + id),
+                "method" : "DELETE"
+            }
+
+            if(confirm("Do you really want to delete this textbook?")){
+                $.ajax(request).done(function(response){
+                    alert("Data Deleted Successfully!")
+                    location.reload()
+                })
+            }
+
+        })
+    }
+        </script>
+    </main>
+</body>
+</html>
